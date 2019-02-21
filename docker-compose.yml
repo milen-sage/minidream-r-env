@@ -4,6 +4,7 @@ services:
   rstudio:
     environment:
       - PASSWORD=minidream
+      - ROOT=TRUE
     build:
       context: .
       dockerfile: Dockerfile
