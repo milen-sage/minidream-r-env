@@ -2,23 +2,45 @@
 Resources for setting up and managing an RStudio environment for interactive mini-DREAM activities
 
 #### AWS instance setup & dependencies:
-1. Choose an Ubuntu based instance (Ubuntu comes with apt-get and python). Make sure to look into Ubuntu's ideal version using the end of life plot https://www.ubuntu.com/info/release-end-of-life (ex. 2018: v16.04)
-2. AWS Security groups would need to have a TCP rule to open port number 8787.
-3. Install Docker-CE on Ubuntu https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1
-4. To allow for user hierarchy creation on login, after executing `docker-compose up --build` change the /home volume permissions to `chmod 777 /home`
+Note: the order of steps below is, genereally, important.
+
+1. Start a Linux EC2 instance (e.g. via PR provisioning system at Sage)
+2. Log in instance shell
+3. Clone this repo
+4. Clone https://github.com/milen-sage/minidream-challenge-2018/tree/master (or get the R-session modules on the instance some other way)
+5. cd in minidream-R-env and run docker-compose up --build 
+	   
+	Note: to install docker and docker composer composer:
+
+		sudo yum update -y
+		sudo yum install -y docker
+		sudo service docker start
+		sudo usermod -a -G docker ec2-user
+		docker run hello-world
+
+		sudo curl -L "https://github.com/docker/compose/releases/download/<latest-stable-release>/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+		docker composer latest version can be found here 
+		https://github.com/docker/compose/releases
+
+		sudo chmod +x /usr/local/bin/docker-compose
+
+
+6. In minidream-R-env run chmod -R 777 ./home   
+7. Run docker exec -id <container_id> bash
+8. You should be root in the docker container shell; add groups rstudio-user, rstudio-admin, student
+9. Run /root/utils/add_students.sh (see the scriupt for usage)
+10. Run /root/utils/add_admins.sh (see the scriupt for usage)
+11. From EC2 instance shell (not the docker container shell) go to minidream-challenge-2018 and copy the modules folder to a shared folder with the docker container (e.g. minidream-env-r/home)
+12. In docker container shell install rsync: 
+	apt-get update -y
+	apt-get -y install rsync
+13. In docker container shell run /root/utils/broadcast_modules.sh (see the script fpr usage)
+
 
 #### Useful-commands and mics. 
 `rstudio-server --help` ex. `rstudio-server suspend-all` will remove the message: "ERROR session hadabend" from an R session console after each service 'reboot'.
 
 #### Useful-links 
 - https://hub.docker.com/u/rocker/
-
-
-
-
-
-
-
-
-
 
