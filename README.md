@@ -29,8 +29,8 @@ Note: the order of steps below is, genereally, important.
 6. In minidream-R-env run chmod -R 777 ./home   
 7. Run docker exec -it <container_id> bash
 8. You should be root in the docker container shell; add groups rstudio-user, rstudio-admin, student
-9. Run /root/utils/add_students.sh (see the scriupt for usage)
-10. Run /root/utils/add_admins.sh (see the scriupt for usage)
+9. Run /root/utils/add_students.sh (see the script for usage)
+10. Run /root/utils/add_admins.sh (e.g. root, see the script for usage)
 11. From EC2 instance shell (not the docker container shell) go to minidream-challenge-2018 and copy the modules folder to a shared folder with the docker container (e.g. minidream-env-r/home)
 12. In docker container shell install rsync: 
 	apt-get update -y
