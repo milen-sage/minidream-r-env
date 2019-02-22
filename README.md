@@ -27,7 +27,7 @@ Note: the order of steps below is, genereally, important.
 
 
 6. In minidream-R-env run chmod -R 777 ./home   
-7. Run docker exec -id <container_id> bash
+7. Run docker exec -it <container_id> bash
 8. You should be root in the docker container shell; add groups rstudio-user, rstudio-admin, student
 9. Run /root/utils/add_students.sh (see the scriupt for usage)
 10. Run /root/utils/add_admins.sh (see the scriupt for usage)
