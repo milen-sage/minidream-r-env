@@ -35,7 +35,7 @@ Note: the order of steps below is, genereally, important.
 12. In docker container shell install rsync: 
 	apt-get update -y
 	apt-get -y install rsync
-13. In docker container shell run /root/utils/broadcast_modules.sh (see the script fpr usage)
+13. In docker container shell run /root/utils/broadcast_modules.sh (see the script for usage)
 
 
 #### Useful-commands and mics. 
