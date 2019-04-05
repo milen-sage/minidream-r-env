@@ -15,7 +15,7 @@ Note: the order of steps below is, genereally, important.
 		sudo yum update -y
 		sudo yum install -y docker
 		sudo service docker start
-		sudo usermod -a -G docker ec2-user
+		sudo usermod -a -G docker <your-ec2-username>
 		docker run hello-world
 
 		sudo curl -L "https://github.com/docker/compose/releases/download/<latest-stable-release>/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
