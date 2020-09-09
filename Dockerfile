@@ -1,4 +1,4 @@
-FROM rocker/rstudio:3.5.2
+FROM rocker/rstudio
 
 COPY config/Rprofile.site /usr/local/lib/R/etc/
 COPY util /root/util/

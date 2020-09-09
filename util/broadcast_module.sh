@@ -22,9 +22,10 @@ for user in $GROUP_MEMBERS; do
         if [[ ! -e "$user_modules" ]]; then
             sudo mkdir -p $user_modules
         fi
-
-        sudo rsync -ur $SHARED_MODULE $user_modules
-        sudo chown -R ${user}.rstudio-admin $user_modules
+        
+	sudo rsync -ur $SHARED_MODULE $user_modules
+        #sudo chown -R ${user}.rstudio-admin $user_modules
+        sudo chown -R ${user}:${user} $user_modules
         sudo find "${user_modules}/${MODULE_NAME}" \
             -name "session-persistent-state" \
             | sudo xargs -n 1 -I{} rm {}
